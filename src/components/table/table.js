@@ -762,7 +762,7 @@ export default {
           '_showDetails'
         ]
         keys(sample).forEach(k => {
-          if (!ignoredKeys.includes(k)) {
+          if (ignoredKeys.indexOf(k) === -1) {
             fields.push({ key: k, label: startCase(k) })
           }
         })

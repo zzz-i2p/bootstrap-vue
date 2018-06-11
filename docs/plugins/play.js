@@ -12,7 +12,7 @@ const loadVue = text => {
     let template = match(TEMPLATE_REGEX, text)
     let script = match(SCRIPT_REGEX, text)
     let options = {}
-    if (script && script.includes('export default')) {
+    if (script && script.indexOf('export default') !== -1) {
         eval(script.replace('export default', 'options = '))
     }
     return { name, template, script, options }
@@ -20,7 +20,7 @@ const loadVue = text => {
 
 const removeNode = node => node && node.parentNode && node.parentNode.removeChild(node)
 
-Vue.directive('play', (el, binding, vnode, oldVnode) => {
+Vue.directive('play', (el, binding, vnode) => {
     // Get all code-snippets
     const pres = Array.prototype.slice.apply(el.querySelectorAll('pre.hljs'))
 
