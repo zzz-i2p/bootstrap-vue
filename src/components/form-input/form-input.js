@@ -18,12 +18,12 @@ const TYPES = [
   'search',
   'range',
   'color',
-  `date`,
-  `time`,
-  `datetime`,
-  `datetime-local`,
-  `month`,
-  `week`
+  'date',
+  'time',
+  'datetime',
+  'datetime-local',
+  'month',
+  'week'
 ]
 
 export default {
@@ -38,7 +38,7 @@ export default {
         type: this.localType,
         disabled: this.disabled,
         required: this.required,
-        readonly: this.readonly || this.plaintext,
+        readonly: this.readonly || (this.plaintext && this.readonly === null),
         placeholder: this.placeholder,
         autocomplete: this.autocomplete || null,
         'aria-required': this.required ? 'true' : null,
@@ -46,6 +46,7 @@ export default {
         value: this.value
       },
       on: {
+        ...this.$listeners,
         input: this.onInput,
         change: this.onChange
       }
@@ -66,7 +67,7 @@ export default {
     },
     readonly: {
       type: Boolean,
-      default: false
+      default: null
     },
     plaintext: {
       type: Boolean,
@@ -155,11 +156,6 @@ export default {
       const fValue = this.format(evt.target.value, evt)
       this.setValue(fValue)
       this.$emit('change', fValue)
-    },
-    focus () {
-      if (!this.disabled) {
-        this.$el.focus()
-      }
     }
   }
 }

@@ -167,7 +167,7 @@ export default {
       rows.push(
         h(
           'tr',
-          { key: 'top-row', class: ['b-table-top-row', this.tbodyTrClass] },
+          { key: 'top-row', class: ['b-table-top-row', typeof this.tbodyTrClass === 'function' ? this.tbodyTrClass(null, 'row-top') : this.tbodyTrClass] },
           [$scoped['top-row']({ columns: fields.length, fields: fields })]
         )
       )
@@ -281,7 +281,7 @@ export default {
             'tr',
             {
               key: `details-${rowIndex}`,
-              class: ['b-table-details', this.tbodyTrClass],
+              class: ['b-table-details', typeof this.tbodyTrClass === 'function' ? this.tbodyTrClass(item, 'row-details') : this.tbodyTrClass],
               attrs: trAttrs
             },
             [details]
@@ -317,7 +317,7 @@ export default {
           'tr',
           {
             key: 'empty-row',
-            class: ['b-table-empty-row', this.tbodyTrClass],
+            class: ['b-table-empty-row', typeof this.tbodyTrClass === 'function' ? this.tbodyTrClass(null, 'row-empty') : this.tbodyTrClass],
             attrs: this.isStacked ? { role: 'row' } : {}
           },
           [empty]
@@ -333,7 +333,7 @@ export default {
       rows.push(
         h(
           'tr',
-          { key: 'bottom-row', class: ['b-table-bottom-row', this.tbodyTrClass] },
+          { key: 'bottom-row', class: ['b-table-bottom-row', typeof this.tbodyTrClass === 'function' ? this.tbodyTrClass(null, 'row-bottom') : this.tbodyTrClass] },
           [$scoped['bottom-row']({ columns: fields.length, fields: fields })]
         )
       )
@@ -487,7 +487,7 @@ export default {
       default: null
     },
     tbodyTrClass: {
-      type: [String, Array],
+      type: [String, Array, Function],
       default: null
     },
     tfootClass: {
@@ -779,16 +779,6 @@ export default {
       })
     },
     computedItems () {
-      // Grab some props/data to ensure reactivity
-      const perPage = this.perPage
-      const currentPage = this.currentPage
-      const filter = this.filter
-      const sortBy = this.localSortBy
-      const sortDesc = this.localSortDesc
-      const sortCompare = this.sortCompare
-      const localFiltering = this.localFiltering
-      const localSorting = this.localSorting
-      const localPaging = this.localPaging
       let items = this.hasProvider ? this.localItems : this.items
       if (!items) {
         this.$nextTick(this._providerUpdate)
@@ -797,30 +787,49 @@ export default {
       // Array copy for sorting, filtering, etc.
       items = items.slice()
       // Apply local filter
-      if (filter && localFiltering) {
-        if (filter instanceof Function) {
-          items = items.filter(filter)
-        } else {
-          let regex
-          if (filter instanceof RegExp) {
-            regex = filter
-          } else {
-            regex = new RegExp('.*' + filter + '.*', 'ig')
-          }
-          items = items.filter(item => {
-            const test = regex.test(recToString(item))
-            regex.lastIndex = 0
-            return test
-          })
+      this.filteredItems = items = this.filterItems(items)
+      // Apply local sort
+      items = this.sortItems(items)
+      // Apply local pagination
+      items = this.paginateItems(items)
+      // Update the value model with the filtered/sorted/paginated data set
+      this.$emit('input', items)
+      return items
+    },
+    computedBusy () {
+      return this.busy || this.localBusy
+    }
+  },
+  methods: {
+    keys,
+    filterItems (items) {
+      if (this.localFiltering && this.filter) {
+        if (this.filter instanceof Function) {
+          return items.filter(this.filter)
         }
+
+        let regex
+        if (this.filter instanceof RegExp) {
+          regex = this.filter
+        } else {
+          regex = new RegExp('.*' + this.filter + '.*', 'ig')
+        }
+
+        return items.filter(item => {
+          const test = regex.test(recToString(item))
+          regex.lastIndex = 0
+          return test
+        })
       }
-      if (localFiltering) {
-        // Make a local copy of filtered items to trigger filtered event
-        this.filteredItems = items.slice()
-      }
-      // Apply local Sort
+      return items
+    },
+    sortItems (items) {
+      const sortBy = this.localSortBy
+      const sortDesc = this.localSortDesc
+      const sortCompare = this.sortCompare
+      const localSorting = this.localSorting
       if (sortBy && localSorting) {
-        items = stableSort(items, (a, b) => {
+        return stableSort(items, (a, b) => {
           let ret = null
           if (typeof sortCompare === 'function') {
             // Call user provided sortCompare routine
@@ -834,21 +843,19 @@ export default {
           return (ret || 0) * (sortDesc ? -1 : 1)
         })
       }
-      // Apply local pagination
-      if (Boolean(perPage) && localPaging) {
-        // Grab the current page of data (which may be past filtered items)
-        items = items.slice((currentPage - 1) * perPage, currentPage * perPage)
-      }
-      // Update the value model with the filtered/sorted/paginated data set
-      this.$emit('input', items)
       return items
     },
-    computedBusy () {
-      return this.busy || this.localBusy
-    }
-  },
-  methods: {
-    keys,
+    paginateItems (items) {
+      const currentPage = this.currentPage
+      const perPage = this.perPage
+      const localPaging = this.localPaging
+      // Apply local pagination
+      if (!!perPage && localPaging) {
+        // Grab the current page of data (which may be past filtered items)
+        return items.slice((currentPage - 1) * perPage, currentPage * perPage)
+      }
+      return items
+    },
     fieldClasses (field) {
       return [
         field.sortable ? 'sorting' : '',
@@ -895,7 +902,7 @@ export default {
         item._rowVariant
           ? `${this.dark ? 'bg' : 'table'}-${item._rowVariant}`
           : '',
-        this.tbodyTrClass
+        typeof this.tbodyTrClass === 'function' ? this.tbodyTrClass(item, 'row') : this.tbodyTrClass
       ]
     },
     rowClicked (e, item, index) {
@@ -988,17 +995,20 @@ export default {
       }
       // Set internal busy state
       this.localBusy = true
-      // Call provider function with context and optional callback
-      const data = this.items(this.context, this._providerSetLocal)
-      if (data && data.then && typeof data.then === 'function') {
-        // Provider returned Promise
-        data.then(items => {
-          this._providerSetLocal(items)
-        })
-      } else {
-        // Provider returned Array data
-        this._providerSetLocal(data)
-      }
+
+      // Call provider function with context and optional callback after DOM is fully updated
+      this.$nextTick(function () {
+        const data = this.items(this.context, this._providerSetLocal)
+        if (data && data.then && typeof data.then === 'function') {
+          // Provider returned Promise
+          data.then(items => {
+            this._providerSetLocal(items)
+          })
+        } else {
+          // Provider returned Array data
+          this._providerSetLocal(data)
+        }
+      })
     },
     getTdValues (item, key, tdValue, defValue) {
       const parent = this.$parent
