@@ -2,6 +2,41 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+<a name="2.0.0"></a>
+# [2.0.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.0.0-rc.11...v2.0.0) (2018-07-23)
+
+
+### Bug Fixes
+
+* **docs:** Fix typo in collapse events doc ([#1848](https://github.com/bootstrap-vue/bootstrap-vue/pull/1848))  ([ea5bd6f](https://github.com/bootstrap-vue/bootstrap-vue/commit/ea5bd6f))
+* **docs:** Fixes broken styling of docs navigation ([#1911](https://github.com/bootstrap-vue/bootstrap-vue/issues/1911)) ([95a5012](https://github.com/bootstrap-vue/bootstrap-vue/commit/95a5012))
+* **docs:** Missing dash and typo ([#1850](https://github.com/bootstrap-vue/bootstrap-vue/issues/1850)) ([7b5fde8](https://github.com/bootstrap-vue/bootstrap-vue/commit/7b5fde8))
+* **docs:** Fix typos in Popover docs ([#1857](https://github.com/bootstrap-vue/bootstrap-vue/issues/1917)) ([dd7ace3](https://github.com/bootstrap-vue/bootstrap-vue/commit/dd7ace3))
+* **docs:** Corrected typo ([#1883](https://github.com/bootstrap-vue/bootstrap-vue/issues/1883)) ([bfba895](https://github.com/bootstrap-vue/bootstrap-vue/commit/bfba895))
+* **docs:** Fixed spelling mistake ([#1887](https://github.com/bootstrap-vue/bootstrap-vue/issues/1887)) ([2970509](https://github.com/bootstrap-vue/bootstrap-vue/commit/2970509))
+* **docs:** Fixes broken styling of docs navigation ([#1911](https://github.com/bootstrap-vue/bootstrap-vue/issues/1911)) ([95a5012](https://github.com/bootstrap-vue/bootstrap-vue/commit/95a5012))
+* **docs:** Fix typos in Popover docs ([#1917](https://github.com/bootstrap-vue/bootstrap-vue/issues/1917)) ([9a21e7e](https://github.com/bootstrap-vue/bootstrap-vue/commit/9a21e7e))
+* **docs:** Fix typo in popover directive documentation ([#1918](https://github.com/bootstrap-vue/bootstrap-vue/issues/1918)) ([afa971d](https://github.com/bootstrap-vue/bootstrap-vue/commit/afa971d))
+* **docs:** Fixed two typos in README.md ([#1927](https://github.com/bootstrap-vue/bootstrap-vue/issues/1927)) ([d63e090](https://github.com/bootstrap-vue/bootstrap-vue/commit/d63e090))
+* **docs:** Typo corrected in tooltips ([#1930](https://github.com/bootstrap-vue/bootstrap-vue/issues/1930)) ([5e4fbe4](https://github.com/bootstrap-vue/bootstrap-vue/commit/5e4fbe4))
+* **docs:** Typo fix in embeds ([#1931](https://github.com/bootstrap-vue/bootstrap-vue/issues/1931)) ([a126bb0](https://github.com/bootstrap-vue/bootstrap-vue/commit/a126bb0))
+* **docs:** Fixed variant reference link ([#1934](https://github.com/bootstrap-vue/bootstrap-vue/issues/1934)) ([3cdd98f](https://github.com/bootstrap-vue/bootstrap-vue/commit/3cdd98f))
+* **docs:** Updated vee-validate example ([#1938](https://github.com/bootstrap-vue/bootstrap-vue/issues/1938)) ([4375474](https://github.com/bootstrap-vue/bootstrap-vue/commit/4375474))
+* **docs:** Typo in README ([#1939](https://github.com/bootstrap-vue/bootstrap-vue/issues/1939)) ([#1942](https://github.com/bootstrap-vue/bootstrap-vue/issues/1942)) ([8a2ca5e](https://github.com/bootstrap-vue/bootstrap-vue/commit/8a2ca5e))
+* **form-input:** Allow readonly to be forced to false when plaintext is enabled ([#1841](https://github.com/bootstrap-vue/bootstrap-vue/issues/1841)) ([b02a6ee](https://github.com/bootstrap-vue/bootstrap-vue/commit/b02a6ee))
+* **form-input:** Add native events listeners ([#1873](https://github.com/bootstrap-vue/bootstrap-vue/issue/1873) ([57af446](https://github.com/bootstrap-vue/bootstrap-vue/commit/57af446))
+* **form-radio:** Typo in form-radio watcher ([#1943](https://github.com/bootstrap-vue/bootstrap-vue/issues/1943)) ([9ab23ef](https://github.com/bootstrap-vue/bootstrap-vue/commit/9ab23ef))
+* **popover:** Fixes close emit argument ([#1937](https://github.com/bootstrap-vue/bootstrap-vue/issues/1937)) ([8b9db28](https://github.com/bootstrap-vue/bootstrap-vue/commit/8b9db28))
+* **table:** Only call provider once DOM is fully updated ([#1904](https://github.com/bootstrap-vue/bootstrap-vue/issues/1904)) ([#1955](https://github.com/bootstrap-vue/bootstrap-vue/issues/1955)) ([ae7147e](https://github.com/bootstrap-vue/bootstrap-vue/commit/ae7147e))
+* **table:** Fix breakpoints on stacked tables to latest bootstrap-values ([#1933](https://github.com/bootstrap-vue/bootstrap-vue/issues/1933)) ([be5bfc5](https://github.com/bootstrap-vue/bootstrap-vue/commit/be5bfc5))
+
+### Features
+* **docs:** Added vee-validate example ([#1889](https://github.com/bootstrap-vue/bootstrap-vue/issues/1889)) ([b2fedf1](https://github.com/bootstrap-vue/bootstrap-vue/commit/b2fedf1))
+* **button:** Make button tag configurable ([#1929](https://github.com/bootstrap-vue/bootstrap-vue/issues/1929)) ([afcadd9](https://github.com/bootstrap-vue/bootstrap-vue/commit/afcadd9))
+* **table:** Split computedItems into multiple functions ([#1893](https://github.com/bootstrap-vue/bootstrap-vue/issues/1893)) ([bb1c550](https://github.com/bootstrap-vue/bootstrap-vue/commit/bb1c550))
+* **table:** Added tbodyTrClass support for functions ([#1797](https://github.com/bootstrap-vue/bootstrap-vue/issues/1797)) ([8e36061](https://github.com/bootstrap-vue/bootstrap-vue/commit/8e36061))
+
+
 <a name="2.0.0-rc.11"></a>
 # [2.0.0-rc.11](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.0.0-rc.10...v2.0.0-rc.11) (2018-05-20)
 
