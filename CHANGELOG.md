@@ -38,6 +38,7 @@ All notable changes to this project will be documented in this file. See [standa
 * **button:** Make button tag configurable ([#1929](https://github.com/bootstrap-vue/bootstrap-vue/issues/1929)) ([afcadd9](https://github.com/bootstrap-vue/bootstrap-vue/commit/afcadd9))
 * **table:** Split computedItems into multiple functions ([#1893](https://github.com/bootstrap-vue/bootstrap-vue/issues/1893)) ([bb1c550](https://github.com/bootstrap-vue/bootstrap-vue/commit/bb1c550))
 * **table:** Added tbodyTrClass support for functions ([#1797](https://github.com/bootstrap-vue/bootstrap-vue/issues/1797)) ([8e36061](https://github.com/bootstrap-vue/bootstrap-vue/commit/8e36061))
+* **table:** Add content-class prop ([#1961](https://github.com/bootstrap-vue/bootstrap-vue/issues/1961)) ([414e6dd](https://github.com/bootstrap-vue/bootstrap-vue/commit/414e6dd))
 
 
 <a name="2.0.0-rc.11"></a>
