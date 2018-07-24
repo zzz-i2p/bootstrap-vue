@@ -3,7 +3,7 @@
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
 <a name="2.0.0"></a>
-# [2.0.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.0.0-rc.11...v2.0.0) (2018-07-23)
+# [2.0.0](https://github.com/bootstrap-vue/bootstrap-vue/compare/v2.0.0-rc.11...v2.0.0) (2018-07-24)
 
 
 ### Bug Fixes
@@ -27,10 +27,13 @@ All notable changes to this project will be documented in this file. See [standa
 * **form-input:** Add native events listeners ([#1873](https://github.com/bootstrap-vue/bootstrap-vue/issue/1873) ([57af446](https://github.com/bootstrap-vue/bootstrap-vue/commit/57af446))
 * **form-radio:** Typo in form-radio watcher ([#1943](https://github.com/bootstrap-vue/bootstrap-vue/issues/1943)) ([9ab23ef](https://github.com/bootstrap-vue/bootstrap-vue/commit/9ab23ef))
 * **popover:** Fixes close emit argument ([#1937](https://github.com/bootstrap-vue/bootstrap-vue/issues/1937)) ([8b9db28](https://github.com/bootstrap-vue/bootstrap-vue/commit/8b9db28))
+* **tab:** typo aria-lablelledby ([#1959](https://github.com/bootstrap-vue/bootstrap-vue/issues/1959)) ([5933955](https://github.com/bootstrap-vue/bootstrap-vue/commit/5933955))
 * **table:** Only call provider once DOM is fully updated ([#1904](https://github.com/bootstrap-vue/bootstrap-vue/issues/1904)) ([#1955](https://github.com/bootstrap-vue/bootstrap-vue/issues/1955)) ([ae7147e](https://github.com/bootstrap-vue/bootstrap-vue/commit/ae7147e))
 * **table:** Fix breakpoints on stacked tables to latest bootstrap-values ([#1933](https://github.com/bootstrap-vue/bootstrap-vue/issues/1933)) ([be5bfc5](https://github.com/bootstrap-vue/bootstrap-vue/commit/be5bfc5))
 
+
 ### Features
+
 * **docs:** Added vee-validate example ([#1889](https://github.com/bootstrap-vue/bootstrap-vue/issues/1889)) ([b2fedf1](https://github.com/bootstrap-vue/bootstrap-vue/commit/b2fedf1))
 * **button:** Make button tag configurable ([#1929](https://github.com/bootstrap-vue/bootstrap-vue/issues/1929)) ([afcadd9](https://github.com/bootstrap-vue/bootstrap-vue/commit/afcadd9))
 * **table:** Split computedItems into multiple functions ([#1893](https://github.com/bootstrap-vue/bootstrap-vue/issues/1893)) ([bb1c550](https://github.com/bootstrap-vue/bootstrap-vue/commit/bb1c550))
